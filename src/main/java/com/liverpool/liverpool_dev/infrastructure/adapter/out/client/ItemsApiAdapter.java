@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
@@ -22,7 +23,8 @@ public class ItemsApiAdapter implements ItemsClientPort {
 
     private final RestClient restClient;
 
-    private String itemsPath = "/items";
+    @Value("${external.api.pedidos-path:/items}")
+    private String itemsPath;
 
     @Override
     public List<Item> fetchAll() {
@@ -35,8 +37,10 @@ public class ItemsApiAdapter implements ItemsClientPort {
                     .retrieve()
                     .body(new ParameterizedTypeReference<List<ItemApiDto>>() {
                     });
-            result = dtos.stream().map(this::toDomain)
-                .peek(x -> System.out.println(x)).collect(Collectors.toList());
+            result = dtos.stream()
+                .map(this::toDomain)
+                .peek(x -> System.out.println(x))
+                .collect(Collectors.toList());
         } catch (Exception e) {
             log.error("Failed to fetch items from external API: {}", e.getMessage());
         }

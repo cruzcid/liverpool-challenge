@@ -1,5 +1,6 @@
 package com.liverpool.liverpool_dev.infrastructure.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
@@ -9,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Configuration
 public class RestClientConfig {
-    
-    private String baseUrl = "https://6994a4eab081bc23e9c0f61e.mockapi.io/api/v1";
+    @Value("${external.api.base-url}")
+    private String baseUrl;
 
     /**
      * application RestClient.

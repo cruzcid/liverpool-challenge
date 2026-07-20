@@ -4,3 +4,9 @@ spring:
 
 server:
   port: ${PORT:8088}
+
+external:
+  api:
+    base-url: https://6994a4eab081bc23e9c0f61e.mockapi.io/api/v1
+    items-path: /items
+    pedidos-path: /pedidos
