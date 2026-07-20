@@ -1,3 +1,6 @@
 spring:
   application:
     name: liverpool-dev
+
+server:
+  port: ${PORT:8088}
