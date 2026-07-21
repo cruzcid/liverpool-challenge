@@ -4,6 +4,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/liverpool_db
+      auto-index-creation: true
 
 server:
   port: ${PORT:8088}
@@ -13,6 +14,14 @@ external:
     base-url: https://6994a4eab081bc23e9c0f61e.mockapi.io/api/v1
     items-path: /items
     pedidos-path: /pedidos
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tags-sorter: alpha
 
 logging:
   level:

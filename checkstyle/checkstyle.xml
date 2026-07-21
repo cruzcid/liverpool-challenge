@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<!--
+    Checkstyle configuration for Liverpool Challenge.
+    Based on best practices for Java/Spring Boot projects.
+    Violations produce warnings (do not break the build).
+-->
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <property name="severity" value="warning"/>
+    <property name="fileExtensions" value="java"/>
+
+    <!-- Enforce newline at end of each file -->
+    <module name="NewlineAtEndOfFile"/>
+
+    <!-- File-level checks -->
+    <module name="FileLength">
+        <property name="max" value="600"/>
+    </module>
+
+    <module name="TreeWalker">
+
+        <!-- ===== NAMING CONVENTIONS ===== -->
+        <module name="ConstantName"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="MethodName"/>
+        <!-- 
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+        </module> -->
+        <module name="ParameterName"/>
+        <module name="StaticVariableName"/>
+        <module name="TypeName"/>
+
+        <!-- ===== IMPORTS ===== -->
+        <module name="AvoidStarImport"/>
+        <module name="UnusedImports"/>
+        <module name="IllegalImport"/>
+        <module name="RedundantImport"/>
+
+        <!-- ===== CODE QUALITY ===== -->
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="StringLiteralEquality"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="OneStatementPerLine"/>
+        <module name="MissingSwitchDefault"/>
+
+        <!-- ===== BLOCKS ===== -->
+        <module name="NeedBraces"/>
+        <module name="LeftCurly"/>
+        <module name="RightCurly"/>
+        <module name="EmptyBlock">
+            <property name="option" value="TEXT"/>
+        </module>
+
+        <!-- ===== WHITESPACE ===== -->
+        <module name="GenericWhitespace"/>
+        <module name="WhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+
+        <!-- ===== JAVADOC ===== -->
+        <module name="JavadocType">
+            <property name="scope" value="public"/>
+        </module>
+
+    </module>
+
+    <!-- ===== LINE LENGTH (Checker-level in Checkstyle 9+) ===== -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+        <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
+    </module>
+
+</module>

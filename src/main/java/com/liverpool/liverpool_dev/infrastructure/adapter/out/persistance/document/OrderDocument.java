@@ -37,7 +37,7 @@ public class OrderDocument {
 
     private boolean giftRegistry;
 
-    private List<String> itemIds;
+    private List<String> items;
 
     private String storeName;
 

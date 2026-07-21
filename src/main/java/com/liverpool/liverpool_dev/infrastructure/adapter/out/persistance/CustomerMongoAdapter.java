@@ -1,5 +1,7 @@
 package com.liverpool.liverpool_dev.infrastructure.adapter.out.persistance;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 
 import com.liverpool.liverpool_dev.domain.model.Customer;
@@ -17,5 +19,25 @@ public class CustomerMongoAdapter implements CustomerRepositoryPort{
     @Override
     public Customer save(final Customer customer) {
         return CustomerMapper.toDomain(repository.save(CustomerMapper.toDocument(customer)));
+    }
+
+    @Override
+    public Optional<Customer> findByUserId(final String userId) {
+        return repository.findByUserId(userId).map(CustomerMapper::toDomain);
+    }
+
+    @Override
+    public void deleteByUserId(final String userId) {
+        repository.deleteByUserId(userId);
+    }
+
+    @Override
+    public boolean existsByUserId(final String userId) {
+        return repository.existsByUserId(userId);
+    }
+
+    @Override
+    public boolean existsByEmail(final String email) {
+        return repository.existsByEmail(email);
     }
 }

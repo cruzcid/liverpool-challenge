@@ -10,4 +10,10 @@ import com.liverpool.liverpool_dev.domain.model.Order;
  */
 public interface OrderCachePort {
     void saveAll(List<Order> orders);
+
+    List<Order> findAll();
+
+    List<Order> findByUserId(String userId);
+
+    List<Order> searchByFields(String query, String orderRef, String orderStatus, String storeName);
 }

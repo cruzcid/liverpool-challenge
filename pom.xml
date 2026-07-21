@@ -36,7 +36,7 @@
 		<springdoc.version>2.6.0</springdoc.version>
 		<flapdoodle.version>4.11.0</flapdoodle.version>
 		<lombok.version>1.18.36</lombok.version>
-        
+        <checkstyle.version>3.3.1</checkstyle.version>
 	</properties>
 
 	<dependencies>
@@ -121,6 +121,29 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
+			<!-- CheckStyle for code style validation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+                <configuration>
+                    <configLocation>checkstyle/checkstyle.xml</configLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>false</failsOnError>
+                    <violationSeverity>error</violationSeverity>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>checkstyle-validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 
