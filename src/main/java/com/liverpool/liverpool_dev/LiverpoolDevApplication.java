@@ -4,8 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.liverpool.liverpool_dev.infrastructure.adapter.out.client.ItemsApiAdapter;
-import com.liverpool.liverpool_dev.infrastructure.adapter.out.client.PedidosApiAdapter;
+import com.liverpool.liverpool_dev.domain.port.in.SyncDataUseCase;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,8 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class LiverpoolDevApplication implements CommandLineRunner {
 
-	private final ItemsApiAdapter adapter;
-	private final PedidosApiAdapter pedidosAdapter;
+	private final SyncDataUseCase syncDataUseCase;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LiverpoolDevApplication.class, args);
@@ -22,8 +20,7 @@ public class LiverpoolDevApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		adapter.fetchAll();
-		pedidosAdapter.fetchAll();
+		syncDataUseCase.syncAll();
 	}
 
 }
