@@ -1,6 +1,9 @@
 spring:
   application:
     name: liverpool-dev
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/liverpool_db
 
 server:
   port: ${PORT:8088}

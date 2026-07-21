@@ -27,6 +27,7 @@ public class DataSyncService implements SyncDataUseCase {
     private final OrderCachePort orderCachePort;
 
     private final ItemCachePort itemCachePort;
+    
     @Override
     public void syncAll() {
         log.info("Syncronizzing info from Liverpool APIs");
