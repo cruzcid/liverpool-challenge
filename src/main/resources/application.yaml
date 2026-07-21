@@ -23,6 +23,10 @@ springdoc:
     operationsSorter: method
     tags-sorter: alpha
 
+scheduling:
+  sync:
+    rate: 1800000
+    
 logging:
   level:
     com.liverpool.challenge: INFO
