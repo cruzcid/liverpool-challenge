@@ -17,6 +17,18 @@ services:
       timeout: 5s
       retries: 5
 
+  app:
+    build: .
+    container_name: liverpool-app
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017/liverpool_db
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
 volumes:
   mongodb_data:
     driver: local
