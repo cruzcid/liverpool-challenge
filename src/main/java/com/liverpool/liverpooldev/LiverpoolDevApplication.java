@@ -1,13 +1,14 @@
-package com.liverpool.liverpool_dev;
+package com.liverpool.liverpooldev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class LiverpoolDevApplication {
+import lombok.RequiredArgsConstructor;
 
+@SpringBootApplication
+@RequiredArgsConstructor
+public class LiverpoolDevApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LiverpoolDevApplication.class, args);
 	}
-
 }
