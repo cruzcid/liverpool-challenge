@@ -44,7 +44,7 @@ import java.util.List;
  * <li>PUT /api/v1/customers/{userId} - update customer personal data</li>
  * <li>PUT /api/v1/customers/{userId}/delivery-address - update delivery
  * address</li>
- * <li>POST /api/v1/customers/{userId}/sync-orders - sync orders from cache</li>
+ * <li>PUT /api/v1/customers/{userId}/sync-orders - sync orders from cache</li>
  * <li>DELETE /api/v1/customers/{userId} - delete customer</li>
  * </ul>
  */
@@ -97,7 +97,7 @@ public class CustomerController {
         return ResponseEntity.ok(CustomerMapper.toResponse(updated));
     }
 
-    @PostMapping("/{userId}/sync-orders")
+    @PutMapping("/{userId}/sync-orders")
     @Operation(summary = "Sync customer's orders from the external API cache")
     public ResponseEntity<CustomerResponse> syncOrders(@PathVariable final String userId) {
         Customer updated = updateCustomerUseCase.syncOrders(userId);
