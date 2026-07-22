@@ -23,7 +23,7 @@ public class ItemsApiAdapter implements ItemsClientPort {
 
     private final RestClient restClient;
 
-    @Value("${external.api.pedidos-path:/items}")
+    @Value("${external.api.items-path:/items}")
     private String itemsPath;
 
     @Override

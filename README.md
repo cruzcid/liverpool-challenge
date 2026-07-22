@@ -223,7 +223,7 @@ JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home ./mvnw spri
 | `GET` | `/api/v1/customers/{userId}` | Get customer with their orders |
 | `PUT` | `/api/v1/customers/{userId}` | Update customer info |
 | `PUT` | `/api/v1/customers/{userId}/delivery-address` | Update delivery address |
-| `POST` | `/api/v1/customers/{userId}/sync-orders` | Link orders from cache to customer |
+| `PUT` | `/api/v1/customers/{userId}/sync-orders` | Link orders from cache to customer |
 | `DELETE` | `/api/v1/customers/{userId}` | Delete a customer |
 | `GET` | `/api/v1/orders/search` | Search orders (accent/case/typo tolerant) |
 | `POST` | `/api/v1/orders/sync` | Manually trigger external API sync |

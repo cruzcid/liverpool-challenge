@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.liverpool.liverpooldev.domain.model.Customer;
 import com.liverpool.liverpooldev.domain.port.out.CustomerRepositoryPort;
+import com.liverpool.liverpooldev.infrastructure.adapter.out.persistance.document.CustomerDocument;
 import com.liverpool.liverpooldev.infrastructure.adapter.out.persistance.repository.CustomerMongoRepository;
 import com.liverpool.liverpooldev.shared.mapper.CustomerMapper;
 
@@ -18,7 +19,11 @@ public class CustomerMongoAdapter implements CustomerRepositoryPort{
 
     @Override
     public Customer save(final Customer customer) {
-        return CustomerMapper.toDomain(repository.save(CustomerMapper.toDocument(customer)));
+        CustomerDocument doc = CustomerMapper.toDocument(customer);
+        repository.findByUserId(customer.getUserId())
+                .map(CustomerDocument::getId)
+                .ifPresent(doc::setId);
+        return CustomerMapper.toDomain(repository.save(doc));
     }
 
     @Override
