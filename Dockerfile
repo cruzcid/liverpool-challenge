@@ -9,6 +9,9 @@ COPY .mvn .mvn
 
 RUN ./mvnw dependency:go-offline -q
 
+# Copy checkstyle configuration
+COPY checkstyle ./checkstyle
+
 # Copy source and build (skip tests — they run against embedded Mongo)
 COPY src ./src
 RUN ./mvnw clean package -DskipTests -q
